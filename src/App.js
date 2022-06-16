@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Book from './Book.js';
 import BookForm from './BookForm.js';
 import BookList from './BookList.js';
@@ -20,6 +20,11 @@ function App() {
   const [visibleBooks, setVisibleBooks] = useState('');
   const [filterString, setFilterString] = useState('');
 
+  useEffect(() => {
+    setVisibleBooks(allBooks);
+    setFilterString('');
+  }, [allBooks]);
+
   function submitBook(e) {
     e.preventDefault();
     const newBook = {
@@ -35,6 +40,12 @@ function App() {
     const bookIndex = allBooks.findIndex((book) => book.title === title);
     allBooks.splice(bookIndex, 1);
     setVisibleBooks([...allBooks]);
+  }
+  function filterBooks(filterString) {
+    setFilterString(filterString);
+    const updatedBooks = allBooks
+      .filter(book => book.title.toLowerCase().includes(filterString.toLowerCase()));
+    setVisibleBooks(updatedBooks);
   }
 
   return (
@@ -60,8 +71,12 @@ function App() {
           author: author,
           color: color,
         }}/>
+        <div className="book-filter">
+          Filter books
+          <input onChange={(e) => filterBooks(e.target.value)} />
+        </div>
         <BookList 
-          books={allBooks}
+          books={filterString ? visibleBooks : allBooks}
           deleteBook={deleteBook}/>
       </div>
     </div>
