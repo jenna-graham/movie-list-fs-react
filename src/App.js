@@ -2,47 +2,69 @@ import './App.css';
 import { useState } from 'react';
 import Book from './Book.js';
 import BookForm from './BookForm.js';
+import BookList from './BookList.js';
 
 function App() {
-  const [bookTitle, setTitle] = useState('');
-  const [bookDate, setDate] = useState('');
-  const [bookAuthor, setAuthor] = useState('');
-  const [bookColor, setColor] = useState('');
-  const [allBooks, SetBooks] = useState([]);
-  const [visibleBooks, setBooks] = useState('');
+  const [title, setTitle] = useState('');
+  const [date, setDate] = useState('');
+  const [author, setAuthor] = useState('');
+  const [color, setColor] = useState('');
+  const [allBooks, setBooks] = useState([
+    {
+      title: 'A New Earth',
+      author: 'Eckhart Tolle',
+      date: '2010',
+      color: 'green'
+    }
+  ]);
+  const [visibleBooks, setVisibleBooks] = useState('');
   const [filterString, setFilterString] = useState('');
 
   function submitBook(e) {
     e.preventDefault();
     const newBook = {
-      title: bookTitle,
-      author: bookAuthor,
-      date: bookDate,
-      color: bookColor,
+      title: title,
+      author: author,
+      date: date,
+      color: color,
     };
+    const updatedBooks = [...allBooks, newBook];
+    setBooks(updatedBooks);
+  }
+  function deleteBook(title) {
+    const bookIndex = allBooks.findIndex((book) => book.title === title);
+    allBooks.splice(bookIndex, 1);
+    setVisibleBooks([...allBooks]);
   }
 
   return (
     <div className="App">
-      <BookForm 
-        submitBook={submitBook}
-        bookTitle={bookTitle}
-        setTitle={setTitle}
-        bookAuthor={bookAuthor}
-        setAuthor={setAuthor}
-        bookDate={bookDate}
-        setDate={setDate}
-        bookColor={bookColor}
-        setColor={setColor}
-      />
-      <Book book={{
-        title: bookTitle,
-        date: bookDate,
-        author: bookAuthor,
-        color: bookColor,
-      }}/>
+      <div>
+        <BookForm 
+          submitBook={submitBook}
+          bookTitle={title}
+          setTitle={setTitle}
+          bookAuthor={author}
+          setAuthor={setAuthor}
+          bookDate={date}
+          setDate={setDate}
+          bookColor={color}
+          setColor={setColor}
+        />
+      </div>
+     
+      <div className="book">
+        <Book book={{
+          title: title,
+          date: date,
+          author: author,
+          color: color,
+        }}/>
+        <BookList 
+          books={allBooks}
+          deleteBook={deleteBook}/>
+      </div>
     </div>
-   
    
   );
 }
