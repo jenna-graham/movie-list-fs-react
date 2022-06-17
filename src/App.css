@@ -1,38 +1,91 @@
+body, html, #root, .App {
+  height: 100%;
+  background-image: url(./rain-g5de0dd010_1280.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: rgb(251, 251, 251);
+font-family: monospace;
+}
+header {
+  color: rgb(251, 251, 251);
+  background-color: rgba(12, 12, 12, 0.782);
+  width: 500px;
+  border-radius: 10px;
+  padding: 20px;
+  border: 6px solid rgb(146, 107, 16);
+  margin: 20px;
+}
+h1 {
+ font-size: 2.5rem;
+}
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.form-preview{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border: solid 6px rgb(146, 107, 16);
+  border-radius: 10px;
+  width: 70%;
+  height: 80%;
+  font-size: 1.5rem;
+  background-color: rgba(12, 12, 12, 0.782);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.book-form  {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  color: rgb(251, 251, 251);
+  background-color: rgba(202, 212, 212, 0.301);
+  padding: 60px;
+  text-align: center;
+  margin: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.add-book {
+  display: flex;
+  flex-direction: row;
+}
+.book {
+  width: 200px;
+  height: 250px;
+  margin: 20px;
+  background-image: url(./book.png);
+  background-size: cover;
+  height: 350px;
+  width: 270px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
-.App-link {
-  color: #61dafb;
+.filter-input {
+  margin: 30px;
+  width: 200px;
+  font-size: 1.8rem;
+}
+div.book-filter {
+  border: solid 2px rgb(146, 107, 16);
+  background-color: rgba(12, 12, 12, 0.782);
+  margin-top: 20px;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.book-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
 }
+
