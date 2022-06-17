@@ -46,6 +46,7 @@ h1 {
   flex-direction: column;
   border: 2px solid black;
   color: rgb(251, 251, 251);
+  background-color: rgba(202, 212, 212, 0.301);
   padding: 60px;
   text-align: center;
   margin: 20px;
