@@ -14,6 +14,7 @@ export default function BookForm({
   return (
     <div className="book-container">
       <form className="book-form" onSubmit={submitBook}>
+        <h3>Add A Book</h3>
         <label>
                 Title
           <input required value={title} onChange={e => setTitle(e.target.value)} />
@@ -29,11 +30,10 @@ export default function BookForm({
         <label>
             Color
           <select required value={color} onChange={e => setColor(e.target.value)}>
-            <option value="red">Red</option>
-            <option value="orange">Orange</option>
-            <option value="yellow">Yellow</option>
-            <option value="Green">Green</option>
-            <option value="Blue">Blue</option>
+            <option value="rgb(86, 127, 127)">Rain</option>
+            <option value="rgb(146, 107, 16)">NightLight</option>
+            <option value="rgb(113, 115, 115)">Cloud</option>
+            <option value="rgb(35, 36, 50)">Thunder</option>
           </select>
         </label>
         <button>Add Book</button>
